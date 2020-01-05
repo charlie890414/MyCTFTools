@@ -1,0 +1,16 @@
+jobs:
+  include:
+    - stage: ubuntu 16.04
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t ctf -f ./16.04/Dockerfile .
+      - docker images
+      - docker tag ctf $DOCKER_USERNAME/ctf
+      - docker push $DOCKER_USERNAME/ctf
+    - stage: ubuntu 18.04
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t ctf -f ./18.04/Dockerfile .
+      - docker images
+      - docker tag ctf $DOCKER_USERNAME/ctf
+      - docker push $DOCKER_USERNAME/ctf
