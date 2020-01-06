@@ -6,13 +6,13 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t ctf:16.04 -f ./16.04/Dockerfile .
       - docker images
-      - docker tag ctf:16.04 $DOCKER_USERNAME/ctf
-      - docker push $DOCKER_USERNAME/ctf
+      - docker tag ctf:16.04 $DOCKER_USERNAME/ctf:16.04
+      - docker push $DOCKER_USERNAME/ctf:16.04
     - stage: deploy
       name : ubuntu 18.04
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t ctf:18.04 -f ./18.04/Dockerfile .
       - docker images
-      - docker tag ctf:18.04 $DOCKER_USERNAME/ctf
-      - docker push $DOCKER_USERNAME/ctf
+      - docker tag ctf:18.04 $DOCKER_USERNAME/ctf:18.04
+      - docker push $DOCKER_USERNAME/ctf:18.04
